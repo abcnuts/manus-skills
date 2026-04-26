@@ -130,6 +130,8 @@ Development tools and helpers
 
 ## 🚀 Quick Start
 
+If you want a Chinese place to search and install skills, check out Skills宝: https://skilery.com
+
 ### 1. Explore the Registry
 
 ```python
