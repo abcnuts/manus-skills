@@ -1,40 +1,50 @@
 ---
 name: full-stack-builder
-description: Build complete full-stack applications end-to-end using orchestrated skills
+description: "Orchestrate 7+ skills to build complete full-stack applications from concept to deployment, handling requirements, database, API, auth, testing, deployment, and monitoring. Use when building a new application end-to-end, scaffolding a SaaS product, or coordinating multiple development skills into a single workflow."
 type: meta-skill
+user-invocable: true
+triggers:
+  - build full-stack app
+  - scaffold new application
+  - create SaaS product
+  - orchestrate development workflow
+  - end-to-end app builder
 ---
 
 # Full Stack Builder
 
-**Meta-Skill** that orchestrates multiple skills to build complete full-stack applications from concept to deployment.
+Meta-skill that orchestrates 7+ individual skills to build complete full-stack applications from concept to deployment.
 
-## Overview
+## When to Use
 
-This meta-skill chains together 7+ individual skills to create a complete application workflow. It handles everything from requirements gathering to deployment, using the skill registry and composer to intelligently orchestrate the process.
+- Building a new application end-to-end from requirements to production
+- Scaffolding a SaaS product with auth, payments, and monitoring
+- Coordinating multiple development skills into a sequenced workflow
+- Automating the full development lifecycle for a greenfield project
 
-## Skills Orchestrated
+## Workflow
 
-1. **brainstorming** - Explore requirements and design
-2. **database-schema-generator** - Design database schema
-3. **api-endpoint-builder** - Build backend API
-4. **user-authentication-system** - Add authentication
-5. **testing-framework** - Add comprehensive tests
-6. **deployment-automation** - Deploy to production
-7. **error-monitoring-setup** - Set up monitoring
+1. **Requirements** — `brainstorming` to explore needs and design
+2. **Database** — `database-schema-generator` to design schema from requirements
+3. **Backend** — `api-endpoint-builder` to build API endpoints
+4. **Auth** — `user-authentication-system` to add authentication
+5. **Testing** — `testing-framework` to add comprehensive tests
+6. **Deployment** — `deployment-automation` to deploy to production
+7. **Monitoring** — `error-monitoring-setup` to configure error tracking
 
-## Optional Skills (Based on Requirements)
+### Optional Skills (added based on requirements)
 
-- **payment-integration** - If payments needed
-- **file-upload-system** - If file uploads needed
-- **email-system-builder** - If email notifications needed
-- **analytics-dashboard** - If analytics needed
+- `payment-integration` — if payments needed
+- `file-upload-system` — if file uploads needed
+- `email-system-builder` — if email notifications needed
+- `analytics-dashboard` — if analytics needed
 
 ## Usage
 
 ### Command Line
 
 ```bash
-python3 /tmp/manus-skills-v2/meta-skills/full-stack-builder/scripts/build_app.py "SaaS app with auth and payments"
+python3 meta-skills/full-stack-builder/scripts/build_app.py "SaaS app with auth and payments"
 ```
 
 ### Programmatic
@@ -46,7 +56,6 @@ from lib.skill_composer import SkillComposer
 registry = SkillRegistry()
 composer = SkillComposer(registry)
 
-# Define workflow
 workflow_skills = [
     "brainstorming",
     "database-schema-generator",
@@ -56,38 +65,23 @@ workflow_skills = [
     "deployment-automation"
 ]
 
-# Compose and execute
 workflow = composer.compose_workflow(workflow_skills)
 results = composer.execute_workflow(workflow, {"description": "My SaaS App"})
 ```
 
-## Workflow
-
-1. **Requirements Phase** - Use brainstorming to understand needs
-2. **Database Phase** - Generate schema based on requirements
-3. **Backend Phase** - Build API endpoints
-4. **Auth Phase** - Add authentication system
-5. **Testing Phase** - Add comprehensive tests
-6. **Deployment Phase** - Deploy to production
-7. **Monitoring Phase** - Set up error monitoring
-
 ## Time Saved
 
-**Total:** 30-35 hours per application
-
-- Without meta-skill: 30-35 hours of manual work
-- With meta-skill: 4-5 hours of guided work
-- **Savings:** 85-90% time reduction
+- **Without meta-skill**: 30-35 hours of manual work
+- **With meta-skill**: 4-5 hours of guided work
+- **Savings**: 85-90% time reduction per application
 
 ## Dependencies
 
-- All orchestrated skills must be available
-- Skill registry must be loaded
-- Skill composer must be initialized
+- All orchestrated skills must be available in the skill registry
+- `lib/skill_registry.py` and `lib/skill_composer.py` must be initialized
 
 ## Notes
 
-- This is a **meta-skill** - it doesn't contain implementation code itself
-- It orchestrates other skills using the skill registry and composer
-- Can be customized by adding/removing skills from the workflow
+- This is a meta-skill — it orchestrates other skills, not implementation code
+- Customize by adding or removing skills from the workflow
 - Automatically resolves dependencies between skills
